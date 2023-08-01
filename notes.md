@@ -1,6 +1,8 @@
-# Swoole
+# Notes
 
-# Overview
+## Swoole
+
+### Overview
 
 According to [Get Started with Open Swoole](https://openswoole.com/docs/get-started-swoole):
 
@@ -27,9 +29,9 @@ PHP.net [Swoole documentation](https://www.php.net/manual/en/intro.swoole.php).
 
 Open Swoole documentation [link](https://openswoole.com/docs)
 
-## Installation of Open Swoole
+### Installation of Open Swoole
 
-### Suggested PHP extensions:
+#### Suggested PHP extensions:
 
 - curl
 - json
@@ -39,7 +41,7 @@ Open Swoole documentation [link](https://openswoole.com/docs)
 - xml
 - zip
 
-### Installing Open Swoole with Pecl
+#### Installing Open Swoole with Pecl
 
 Open Swoole [prequisties](https://openswoole.com/docs/get-started/prerequisites):
 
@@ -113,17 +115,17 @@ $ php -m | grep openswoole
 composer require openswoole/core:22.1.2
 ```
 
-### Curl Calls
+### Making Curl Calls
 
 See [Enabling coroutine support for the CURL library (libcurl)](https://openswoole.com/docs/runtime-hooks/swoole-hook-native-curl)
 
-### Documentation
-
-<https://openswoole.com/docs/swoole-get-started#server>
-
-### USe with MySQL
+### Use with MySQL
 
 <https://openswoole.com/docs/modules/swoole-coroutine-mysql>
+
+### Open Swoole Documentation
+
+<https://openswoole.com/docs/swoole-get-started#server>
 
 ## Using PHP `getopts()` to Process Command Line Arguments
 
