@@ -1,0 +1,7 @@
+/nbproject
+/.vscode
+/vendor
+config.xml
+x*
+.*x*
+*.swp
