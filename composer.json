@@ -1,6 +1,6 @@
 {
     "name": "kurt-krueckeberg/openfda",
-    "description": "openfda REST API related PHP code",
+    "description": "Code related to openFDA Device Events",
     "type": "library",
     "autoload": {
         "psr-4": {

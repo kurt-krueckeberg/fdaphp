@@ -1,12 +1,33 @@
-# Notes
+# Swoole
 
-## Swoole
+# Overview
 
-Documentation at [swoole-docs](https://github.com/swoole/swoole-docs). It does seem more succinct.
+According to [Get Started with Open Swoole](https://openswoole.com/docs/get-started-swoole):
 
-## Open Swoole
+> Open Swoole is released as a PHP PECL (PHP Extension Community Library) extension (written in C++) and runs as a PHP CLI application,
+simply by running `$ php server.php`. 
 
-### Installation
+So it doesn't even need a web server like Apache or Nginx or evenphp8.1-fpm running. According to 
+[How Open Swoole works](https://openswoole.com/how-it-works):
+
+> You can either run OpenSwoole directly on your network or use Apache or Nginx with a proxy pass through setup to accept requests.
+OpenSwoole simplifies the PHP server setup as you don't need to run a separate HTTP server, it is all handled at the PHP level,
+replacing the need for PHP-FPM.
+
+Here are two older basic articles explaining what it is:
+
+- [Creating a Basic PHP Web Server With Swoole](https://www.zend.com/blog/creating-basic-php-web-server-swoole)
+- [PHP Basics: What Is Swoole?](https://www.zend.com/blog/swoole)
+
+Youtube:
+
+[PHP Swoole Tutorials](https://www.youtube.com/watch?v=fZfZsUeleiA&list=PLYWCHRaNLGT-55hyJ0y9g7O8B0N8QrBmr)
+
+PHP.net [Swoole documentation](https://www.php.net/manual/en/intro.swoole.php).
+
+Open Swoole documentation [link](https://openswoole.com/docs)
+
+## Installation of Open Swoole
 
 ### Suggested PHP extensions:
 
@@ -62,27 +83,27 @@ The curl extension must load before swoole, so I did this:
 extension=openswoole.so
 ```
 
-2. Create symbolic links in `/etc/php/8.1/cli/conf.d` and `/etc/php/8.1/fpm/conf.d` each called `25-swoole.ini` that refers to
+2. Create symbolic links in `/etc/php/8.1/cli/conf.d`  called `25-swoole.ini` that refers to
 `/etc/php/8.1/mods-available/swoole.ini`:
 
 ```bash
 cd /etc/php/8.1/cli/conf.d
 
 sudo ln -s /etc/php/8.1/mods-available/openswoole.ini 25-openswoole.ini
-
-cd /etc/php/8.1/fpm/conf.d
-
-sudo ln -s /etc/php/8.1/mods-available/openswoole.ini 25-openswoole.ini
 ```
 
-Then did:
+**Note:** You don't need to enable to php8.X-fpm swoole extensions, unless you plan to use php8.X-fpm.
+As mentioned at the beginning, it is not needed: the swoole server(s) run as a PHP CLI app. So this is
+**NOT needed**:
 
 ```bash
+cd /etc/php/8.1/fpm/conf.d   <--- Not needed
+sudo ln -s /etc/php/8.1/mods-available/openswoole.ini 25-openswoole.ini
 sudo systemctl restart php8.1-fpm
 systemctl status php8.1-fpm
 ```
 
-And then checked that `openswoole` was installed:
+Check that `openswoole` was installed:
 
 ```
 $ php -m | grep openswoole
@@ -138,3 +159,5 @@ Maybe a generic pasers, maybe in PHP, will be useful in the implementation? Or a
 
 - [TNTSearch](https://github.com/teamtnt/tntsearch) is a full-text search (FTS) engine written entirely in PHP. It could help highlight? OR maybe
 I could download all the JSON openFDA LASIK data, sort it in a DB and then search it?
+
+
