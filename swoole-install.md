@@ -31,7 +31,7 @@ prompts. Below are my personal installation choices (of "yes" to everything exce
 sudo pecl install -D 'enable-sockets="yes" enable-openssl="yes" enable-http2="yes" enable-mysqlnd="no" enable-hook-curl="yes" enable-cares="yes" with-postgres="no"' openswoole
 ```
 
-The build of `openswoole.so` and concluded with:
+The build of the `openswoole.so` library concludes with:
 
 ```
 Build process completed successfully
@@ -43,18 +43,18 @@ configuration option "php_ini" is not set to php.ini location
 You should add "extension=openswoole.so" to php.ini
 ```
 
-Next, you must manually add "extension=openswoole.so" to php.ini. I did this:
+Therefore, you must manually add "extension=openswoole.so" to php.ini. I chose to do it this way:
 
-The curl extension must load before swoole, so I did this:
+First, since the curl extension must load before swoole, I did this:
 
 1. Created `openswoole.ini` in `/etc/php/8.1/mods-available/openswoole.ini` with this content
 
 ```ini
-; priority=25
+; priority=25.
 extension=openswoole.so
 ```
 
-2. Create symbolic links in `/etc/php/8.1/cli/conf.d`  called `25-swoole.ini` that refers to
+2. Create a symbolic links in `/etc/php/8.1/cli/conf.d`  named `25-swoole.ini` that refers to
 `/etc/php/8.1/mods-available/swoole.ini`:
 
 ```bash
@@ -62,23 +62,18 @@ cd /etc/php/8.1/cli/conf.d
 
 sudo ln -s /etc/php/8.1/mods-available/openswoole.ini 25-openswoole.ini
 ```
+The '25` ensures it will load after the curl extension, whose symlink is `20-curl.ini`.
 
-**Note:** You don't need to enable to php8.X-fpm swoole extensions, unless you plan to use php8.X-fpm.
-As mentioned at the beginning, it is not needed: the swoole server(s) run as a PHP CLI app. So this is
-**NOT needed**:
+> [!NOTE] As mentioned in the Swoole overview, you don't need to enable to php8.X-fpm in order to use the swoole extensions. You DON'T
+> need to create a similiar `/etc/php/8.1/fpm/conf.d/25-openswoole.ini` and then restart Apache or `php8.1-fpm` (as of this writing) for Nginx!
 
-```bash
-cd /etc/php/8.1/fpm/conf.d   <--- Not needed
-sudo ln -s /etc/php/8.1/mods-available/openswoole.ini 25-openswoole.ini
-sudo systemctl restart php8.1-fpm
-systemctl status php8.1-fpm
-```
-
-Check that `openswoole` was installed:
+To check that `openswoole` was installed:
 
 ```
 $ php -m | grep openswoole
 ```
+
+Lastly, enable use of Open Swoole for your project:
 
 ```bash
 composer require openswoole/core:22.1.2
