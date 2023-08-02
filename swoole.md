@@ -2,7 +2,7 @@
 
 ## Overview
 
-According to [Get Started with Open Swoole](https://openswoole.com/docs/get-started-swoole):
+What is Swoole or Open Swoole? [Get Started with Open Swoole](https://openswoole.com/docs/get-started-swoole) says:
 
 > Open Swoole is released as a PHP PECL (PHP Extension Community Library) extension (written in C++) and runs as a PHP CLI application,
 simply by running `$ php server.php`. 
