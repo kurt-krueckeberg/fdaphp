@@ -1,6 +1,6 @@
 # Installation of Open Swoole
 
-## Suggested PHP extensions:
+## Suggested PHP extensions to first have installed:
 
 - curl
 - json
