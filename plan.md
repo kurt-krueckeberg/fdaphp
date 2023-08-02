@@ -1,4 +1,3 @@
-Go through overiew articles by Wie Phinny, youtube videos and swoole By Example.
-
-Write Curl code to download json device events and from these select just the
-LASIK related.
+Learn Swoole.
+First, with Swoole enabled, use the PHP curl function to asynchronisly download the json device events and the filter out the LASIK related.
+adverse events. Perhaps you logic in the [maude extraction tool](https://github.com/kurt-krueckeberg/maude-extraction-tool) repo.
