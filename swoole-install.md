@@ -14,7 +14,7 @@
 
 Open Swoole [prequisties](https://openswoole.com/docs/get-started/prerequisites):
 
-These apt packages:
+These Ubuntu or Debian apt packages must first be installed:
 
 - openssl
 - libssl-dev
