@@ -12,9 +12,7 @@
 
 ## Installing Open Swoole with Pecl
 
-Open Swoole [prequisties](https://openswoole.com/docs/get-started/prerequisites):
-
-These Ubuntu or Debian apt packages must first be installed:
+As stated in Open Swoole [prequisties](https://openswoole.com/docs/get-started/prerequisites). These Ubuntu or Debian apt packages must first be installed:
 
 - openssl
 - libssl-dev
@@ -23,6 +21,9 @@ These Ubuntu or Debian apt packages must first be installed:
 - libpcre3-dev
 - build-essential
 
+> [!NOTE]
+> Using g++ 13 will results in compile errors. Version 12 does work.
+> 
 **Note:** Using g++ 13 will results in compile errors. Version 12 does work.
 
 Per <https://openswoole.com/docs/get-started/installation>:
