@@ -21,10 +21,8 @@ As stated in Open Swoole [prequisties](https://openswoole.com/docs/get-started/p
 - libpcre3-dev
 - build-essential
 
-> [!NOTE]
-> Using g++ 13 will results in compile errors. Version 12 does work.
-> 
-**Note:** Using g++ 13 will results in compile errors. Version 12 does work.
+> [!WARNING]
+> As of August, 2023, using g++ 13 results in compile errors that terminate the installation. g++ version 12 does work.
 
 Per <https://openswoole.com/docs/get-started/installation>:
 
