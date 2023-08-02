@@ -24,8 +24,8 @@ As stated in Open Swoole [prequisties](https://openswoole.com/docs/get-started/p
 > [!WARNING]
 > As of August, 2023, using g++ 13 results in compile errors that terminate the installation. g++ version 12 does work.
 
-As [How to Install Open Swoole](https://openswoole.com/docs/get-started/installation) explains you can use predefined responses to the pecl installation
-prompt. Below are my personal installation choices ("yes" to everything but using the native MySQL driver):
+[How to Install Open Swoole](https://openswoole.com/docs/get-started/installation) explains you can supply predefined responses to the pecl installation
+prompts. Below are my personal installation choices (of "yes" to everything except the native MySQL driver):
 
 ```bash
 sudo pecl install -D 'enable-sockets="yes" enable-openssl="yes" enable-http2="yes" enable-mysqlnd="no" enable-hook-curl="yes" enable-cares="yes" with-postgres="no"' openswoole
