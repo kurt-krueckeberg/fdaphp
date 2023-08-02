@@ -62,6 +62,7 @@ cd /etc/php/8.1/cli/conf.d
 
 sudo ln -s /etc/php/8.1/mods-available/openswoole.ini 25-openswoole.ini
 ```
+
 The '25` ensures it will load after the curl extension, whose symlink is `20-curl.ini`.
 
 > [!NOTE] As mentioned in the Swoole overview, you don't need to enable to php8.X-fpm in order to use the swoole extensions. You DON'T
@@ -78,15 +79,3 @@ Lastly, enable use of Open Swoole for your project:
 ```bash
 composer require openswoole/core:22.1.2
 ```
-
-## Making Curl Calls
-
-See [Enabling coroutine support for the CURL library (libcurl)](https://openswoole.com/docs/runtime-hooks/swoole-hook-native-curl)
-
-## Use with MySQL
-
-<https://openswoole.com/docs/modules/swoole-coroutine-mysql>
-
-## Open Swoole Documentation
-
-<https://openswoole.com/docs/swoole-get-started#server>
