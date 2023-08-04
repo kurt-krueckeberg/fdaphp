@@ -22,8 +22,8 @@ class OpenApi extends RestApi {
    }
 
    /*
-    * External code must build array of $parameters. 
-    * The client must know that skip and offset are optional
+    * External code must build the array of openFDA API parameters.
+    * He must know what he wants to do (and even which params are optional).
     */
    final public function query(array $parms) : \stdClass
    {
