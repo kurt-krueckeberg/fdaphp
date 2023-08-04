@@ -7,15 +7,15 @@ use GuzzleHttp\Psr7\Response;
 
 class RestApi {
 
-   protected Client $client;  
+   private Client $client;  
 
    private $header_options = array();
- 
-   public function __construct(ConfigFile $c)
+
+   public function __construct(array $headers, string $base_uri)
    {      
        $this->header_options = $c->get_config();
        
-       $this->client = new Client( ['base_uri' => $params['base_uri']]);
+       $this->client = new Client( ['base_uri' => $base_uri]);
    }
 
    public function request(string $method, string $route, array $options = array()) : string
