@@ -11,10 +11,10 @@ class OpenApi extends RestApi {
 
    private static $method = 'GET';
 
-   /*
-     ConfigFile has base_uri, endpoint, and API key that goes in header.
-    */ 
-   public function __construct(ConfigFile $c)
+  /*
+   * ConfigFile has base_uri, endpoint, and API key that goes in header.
+   */ 
+  public function __construct(ConfigFile $c)
    {      
       parent::__construct($c->headers(), $c->endpoint()); 
 
