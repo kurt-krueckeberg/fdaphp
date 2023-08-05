@@ -1,6 +1,6 @@
 {
     "name": "kurt-krueckeberg/openfda",
-    "description": "Code related to openFDA Device Events",
+    "description": "Code related to openFDA API",
     "type": "library",
     "autoload": {
         "psr-4": {
