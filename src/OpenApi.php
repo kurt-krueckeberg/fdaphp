@@ -5,6 +5,10 @@ namespace OpenFda
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
+/*
+Go with one class and no base, with GuzzleHttp/Client as a property
+*/
+
 class OpenApi extends RestApi {
    
    private string $route;
