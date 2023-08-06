@@ -6,9 +6,9 @@ class Config {
 
    private \SimpleXMLElement $xml;
 
-   public function __construct(string $xml_fname)
+   public function __construct(string $xml_name)
    {   
-      $this->xml = simplexml_load_file($xml_fname);
+      $this->xml = simplexml_load_file($xml_name);
    }
 
    public function endpoint() : string
