@@ -1,5 +1,33 @@
 # Notes
 
+## Guzzle and Query Strings
+
+[Guzzle and Query String](https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters):
+
+You can provide query string parameters with a request in several ways.
+
+1. You can set query string parameters in the request's URI:
+
+`$response = $client->request('GET', 'http://httpbin.org?foo=bar');`
+
+2. You can specify the query string parameters using the query request option as an array.
+
+```php
+$client->request('GET', 'http://httpbin.org', [
+    'query' => ['foo' => 'bar']
+]);
+```
+
+3. Providing the option as an array will use PHP's `http_build_query` function to format the query string.
+
+And finally, you can provide the query request option as a string.
+
+```phhp
+$client->request('GET', 'http://httpbin.org', ['query' => 'foo=bar']);
+```
+
+
+
 ## Using PHP `getopts()` to Process Command Line Arguments
 
 See:
