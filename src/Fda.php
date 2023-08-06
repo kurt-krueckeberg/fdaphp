@@ -8,21 +8,26 @@ use GuzzleHttp\Psr7\Response;
 class Fda  {
    
   private Client $client;
+
+  private string $route;
+  private string $method;
+  private $headers = array();
+
   private Config $c;
 
-  private $headers = array();
-  private static $method = 'GET';
-
   public function __construct(Config $c)
-   {    
+  {    
       $this->client = new Client($c->base_uri());
 
       $this->c = $c; 
 
+      $this->route = $c->route();
+
+      $this->method = $c->method();
+
       $this->headers = $c->authorize();
    }
 
-   // maybe not necessary since 
    private function request(string $method, array $options = array()) : string
    {
        $options['headers'] = $this->headers;
@@ -53,15 +58,12 @@ class Fda  {
        return urldecode($obj->outputs[0]->output);
    }
 
-   // todo: incoroporate the other ways of passing a query string to the Client
    final public function query(string $query_string) : \stdClass
    {
-       $contents = $this->request(self::$method, $this->route, ['query' => $query_string]); 
+       $contents = $this->request($this->method, $this->route, ['query' => $query_string]); 
 
        $obj = json_decode($contents);
 
        return urldecode($obj->outputs[0]->output);
    }
-   
-
 }
