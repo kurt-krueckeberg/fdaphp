@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace OpenFda
 
-class ResultsIterator extends \ArrayIterator {
+class ResultsIterator extends \ArrayIterator { // implements IteratorAggregate?
     
     private $func;
    
