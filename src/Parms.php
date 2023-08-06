@@ -21,9 +21,9 @@ class Parms {
 
    static public function fromString(string $str, string $delim)
    {
-      $pos = strpos($str, $delim);
-      //
+      $a = explode($str, $delim);
 
+      match( 
       return new Parms(...);
    }
 }

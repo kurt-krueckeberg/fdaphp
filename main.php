@@ -7,9 +7,7 @@ $api = new Fda($c);
 
 foreach($file as $line) {
 
-  $parms = new Parms(
-}
-    
-$parms = "search: 
+  $parms = Parms::fromString($line, "#");
 
-$api->query($parms);
+  $api->query($parms);  
+}
