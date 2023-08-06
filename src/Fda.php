@@ -5,23 +5,16 @@ namespace OpenFda
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
-/*
-Go with one class and no base, with GuzzleHttp/Client as a property
-*/
-
 class Fda  {
    
-   private Client $client;
-   private Config $config;
+  private Client $client;
+  private Config $config;
 
-   private static $method = 'GET';
+  private static $method = 'GET';
 
-  /*
-   * ConfigFile has base_uri, endpoint, and API key that goes in header.
-   */ 
   public function __construct(ConfigFile $c)
    {    
-      $c->headers(), $c->endpoint());   
+      // $c->headers(), $c->endpoint());   
 
       $this->client = new Client($c->base_uri());
 
@@ -39,12 +32,26 @@ class Fda  {
    }
 
    // todo: incoroporate the other ways of passing a query string to the Client
-   final public function query(array $parms) : \stdClass
+   final public function query(string $query_string) : \stdClass
    {
-       $contents = $this->request(self::$method, $this->route, ['query' => $parms]); 
+       $contents = $this->request(self::$method, $this->route, ['query' => $query_string]); 
 
        $obj = json_decode($contents);
 
        return urldecode($obj->outputs[0]->output);
    }
+   
+   final public function request(Parms $parm) : \stdClass
+   {
+       $query = array();
+
+       if ( 
+       $contents = $this->request(self::$method, $this->route, ['query' => [ 'search' => $search, ]]);
+                                                              ]); 
+
+       $obj = json_decode($contents);
+
+       return urldecode($obj->outputs[0]->output);
+   }
+
 }

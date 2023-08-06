@@ -13,9 +13,7 @@ You can provide query string parameters with a request in several ways.
 2. You can specify the query string parameters using the query request option as an array.
 
 ```php
-$client->request('GET', 'http://httpbin.org', [
-    'query' => ['foo' => 'bar']
-]);
+$client->request('GET', 'http://httpbin.org', [ 'query' => ['foo' => 'bar'] ]);
 ```
 
 3. Providing the option as an array will use PHP's `http_build_query` function to format the query string.
