@@ -8,27 +8,49 @@ use GuzzleHttp\Psr7\Response;
 class Fda  {
    
   private Client $client;
-  private Config $config;
+  private Config $c;
 
+  private $headers = array();
   private static $method = 'GET';
 
-  public function __construct(ConfigFile $c)
+  public function __construct(Config $c)
    {    
-      // $c->headers(), $c->endpoint());   
-
       $this->client = new Client($c->base_uri());
 
-      $this->route = $c->route();
+      $this->c = $c; 
+
+      $this->headers = $c->authorize();
    }
 
    // maybe not necessary since 
-   private function request(string $method, string $route, array $options = array()) : string
+   private function request(string $method, array $options = array()) : string
    {
-       $options['headers'] = $this->header_options();
+       $options['headers'] = $this->headers;
  
-       $response = $this->client->request($method, $route, $options);
+       $response = $this->client->request($c->method, $c->route(), $options);
 
        return $response->getBody()->getContents();
+   }
+
+   final public function request(Parms $parm) : \stdClass
+   {
+       $query = array();
+
+       if ($parm->search !== '') 
+               $query['search'] = $parm->search;
+
+       if ($parm->count !== '') 
+               $query['count'] = $parm->count;
+       
+       $query['limit'] = $parms->limit;
+
+       $query['skip'] = $parms->skip;
+
+       $contents = $this->request(self::$method, $this->route, ['query' => $query]]);
+
+       $obj = json_decode($contents);
+
+       return urldecode($obj->outputs[0]->output);
    }
 
    // todo: incoroporate the other ways of passing a query string to the Client
@@ -41,17 +63,5 @@ class Fda  {
        return urldecode($obj->outputs[0]->output);
    }
    
-   final public function request(Parms $parm) : \stdClass
-   {
-       $query = array();
-
-       if ( 
-       $contents = $this->request(self::$method, $this->route, ['query' => [ 'search' => $search, ]]);
-                                                              ]); 
-
-       $obj = json_decode($contents);
-
-       return urldecode($obj->outputs[0]->output);
-   }
 
 }
