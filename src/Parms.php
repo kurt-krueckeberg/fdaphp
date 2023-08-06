@@ -18,4 +18,12 @@ class Parms {
                                public readonly    int $offset = 0)
 
    }
+
+   static public function fromString(string $str, string $delim)
+   {
+      $pos = strpos($str, $delim);
+      //
+
+      return new Parms(...);
+   }
 }
