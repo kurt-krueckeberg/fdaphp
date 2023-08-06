@@ -6,7 +6,7 @@ class Config {
 
    private \SimpleXMLElement $xml;
 
-   private array $authorize = array();
+   private array $headers = array();
 
    public function __construct(string $xml_name)
    {   
@@ -31,11 +31,11 @@ class Config {
 
           $key = (string) $header['key'];
 
-          $this->authorize[$key] = (string) $header;              
+          $this->headers[$key] = (string) $header;              
        }
    }
 
-   public function authorization() : array
+   public function headers() : array
    {
       return $this->authorize;
    }

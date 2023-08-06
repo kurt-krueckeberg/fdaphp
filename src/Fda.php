@@ -25,7 +25,7 @@ class Fda  {
 
       $this->method = $c->method();
 
-      $this->headers = $c->authorize();
+      $this->headers = $c->headers();
    }
 
    private function request(string $method, array $options = array()) : string
