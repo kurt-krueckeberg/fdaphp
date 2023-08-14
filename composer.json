@@ -17,7 +17,7 @@
       "ext-mbstring": ">=8.1",
       "ext-opcache": ">=8.1",
       "ext-xml": ">=8.1",
-      "ext-zip": ">=8.1"
+      "ext-zip": ">=8.1",
       "guzzlehttp/guzzle": "^7.5.0"
     },
     "license": "MIT",
