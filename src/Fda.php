@@ -11,6 +11,7 @@ class Fda  {
 
   private string $route;
   private string $method;
+
   private $headers = array();
 
   private Config $c;
@@ -37,33 +38,12 @@ class Fda  {
        return $response->getBody()->getContents();
    }
 
-   final public function request(Parms $parm) : \stdClass
+   final public function query(string | array $parm) : \stdClass
    {
-       $query = array();
+       $contents = $this->request($this->method, $this->route, ['query' => $parm]); 
 
-       if ($parm->search !== '') 
-               $query['search'] = $parm->search;
+        $obj = json_decode($contents);
 
-       if ($parm->count !== '') 
-               $query['count'] = $parm->count;
-       
-       $query['limit'] = $parms->limit;
-
-       $query['skip'] = $parms->skip;
-
-       $contents = $this->request(self::$method, $this->route, ['query' => $query]]);
-
-       $obj = json_decode($contents);
-
-       return urldecode($obj->outputs[0]->output);
-   }
-
-   final public function query(string $query_string) : \stdClass
-   {
-       $contents = $this->request($this->method, $this->route, ['query' => $query_string]); 
-
-       $obj = json_decode($contents);
-
-       return urldecode($obj->outputs[0]->output);
+        return urldecode($obj->outputs[0]->output);
    }
 }
