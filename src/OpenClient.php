@@ -17,7 +17,9 @@ class OpenClient  {
   {    
      $this->c = new Config($fname); 
 
-     $this->client = new Client($c->base_uri);
+     $this->client = new Client(
+             ['base_uri' => $this->c->base_url]
+             );
   }
 
   private function request(string $method, array $options = array()) : string

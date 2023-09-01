@@ -6,13 +6,14 @@ include "vendor/autoload.php";
 
 $api = new OpenClient("config.xml");
 
+$file = new \SplFileObject($queries);
+
 foreach($file as $line) {
 
-    /*
+
   $parms = Parms::fromString($line, "#");
 
   $api->query($parms);  
-      */
-    
+        
     echo $line . "\n";
 }

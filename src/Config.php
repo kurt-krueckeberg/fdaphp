@@ -9,39 +9,28 @@ class Config {
    public readonly array $headers;
    public readonly string $method;
    public readonly string $endpoint;
-   public readonly string $baseurl;
+   public readonly string $base_url;
 
    public function __construct(string $fname)
    {   
       $this->xml = simplexml_load_file($fname);
 
-      $this->base_url = (string) $this->xml->base_rule;
+      $this->base_url = (string) $this->xml->base_url;
       $this->endpoint = (string) $this->xml->endpoint;
       $this->method = (string) $this->xml->method;
-      $this->set_headers();
+
+      $this->headers = $this->get_headers(); 
    }
 
-/*
-   public function endpoint() : string
+   private function get_headers() : array
    {
-      return (string) $this->xml->endpoint;
-   }
+      $auth = array();
+        
+      $auth[(string) $this->xml->header->authorization['key']] = (string) $this->xml->header->authorization;
  
-   public function route() : string
-   {
-      return (string) $this->xml->route;
+      return $auth;
    }
-*/
-   private function set_headers() 
-   {
-       foreach($simplexml->headers->header as $header) {
-
-          $key = (string) $header['key'];
-
-          $this->headers[$key] = (string) $header;              
-       }
-   }
-
+  
    public function headers() : array
    {
       return $this->authorize;
