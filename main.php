@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-use OpenFda\{OpenFda, Parms};
+$x = 10;
 
-$api = new OpenFda("config.xml");
+$api = new OpenFda\OpenClient("config.xml");
 
 foreach($file as $line) {
 

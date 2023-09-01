@@ -5,7 +5,7 @@ namespace OpenFda
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
-class OpenFda  {
+class OpenClient  {
    
   private Client $client;
 
