@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-include "vendor/autload.php";
+include "vendor/autoload.php";
 
 $x = 10;
 
