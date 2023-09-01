@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+include "vendor/autload.php";
+
 $x = 10;
 
 $api = new OpenFda\OpenClient("config.xml");
