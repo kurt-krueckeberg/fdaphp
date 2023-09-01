@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
-namespace OpenFda
+namespace OpenFda;
 
 class Config {
 
    private \SimpleXMLElement $xml;
 
-   publid readonly array $headers = array();
-   public readonly $method;
-   public readonly $endpoint;
-   public readonly $baseurl;
+   public readonly array $headers;
+   public readonly string $method;
+   public readonly string $endpoint;
+   public readonly string $baseurl;
 
-   public function __construct(string $xml_name)
+   public function __construct(string $fname)
    {   
-      $this->xml = simplexml_load_file($xml_name);
+      $this->xml = simplexml_load_file($fname);
 
       $this->base_url = (string) $this->xml->base_rule;
       $this->endpoint = (string) $this->xml->endpoint;
@@ -32,7 +32,7 @@ class Config {
       return (string) $this->xml->route;
    }
 */
-   private function set_headers() : null
+   private function set_headers() 
    {
        foreach($simplexml->headers->header as $header) {
 

@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace OpenFda
+namespace OpenFda;
 
 class ResultsIterator extends \ArrayIterator { // implements IteratorAggregate?
     

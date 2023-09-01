@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace OpenFda
+namespace OpenFda;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
@@ -13,9 +13,9 @@ class OpenClient  {
 
   private Config $c;
 
-  public function __construct(string $config)
+  public function __construct(string $fname)
   {    
-     $this->c = new Config($config_file); 
+     $this->c = new Config($fname); 
 
      $this->client = new Client($c->base_uri);
   }
