@@ -6,15 +6,22 @@ class Config {
 
    private \SimpleXMLElement $xml;
 
-   private array $headers = array();
+   publid readonly array $headers = array();
+   public readonly $method;
+   public readonly $endpoint;
+   public readonly $baseurl;
 
    public function __construct(string $xml_name)
    {   
       $this->xml = simplexml_load_file($xml_name);
 
-      $this->headers_();
+      $this->base_url = (string) $this->xml->base_rule;
+      $this->endpoint = (string) $this->xml->endpoint;
+      $this->method = (string) $this->xml->method;
+      $this->set_headers();
    }
 
+/*
    public function endpoint() : string
    {
       return (string) $this->xml->endpoint;
@@ -24,8 +31,8 @@ class Config {
    {
       return (string) $this->xml->route;
    }
-
-   private function headers_() : null
+*/
+   private function set_headers() : null
    {
        foreach($simplexml->headers->header as $header) {
 

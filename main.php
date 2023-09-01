@@ -1,9 +1,9 @@
 <?php
-use OpenFda/{Fda, Parms};
+declare(strict_types=1);
 
-$c = new Config("config.xml");
+use OpenFda\{OpenFda, Parms};
 
-$api = new Fda($c);
+$api = new OpenFda("config.xml");
 
 foreach($file as $line) {
 
