@@ -13,20 +13,33 @@ class OpenClient  {
 
   private Config $c;
 
+  array $options = array();
+
   public function __construct(string $fname)
   {    
      $this->c = new Config($fname); 
 
+
+     //  Q: Cn I pass some default options on the ctor--does it
+     // help in any way?
      $this->client = new Client(
              ['base_uri' => $this->c->base_url]
              );
+
+     
+     $this->options['headers'] = $this->headers;
   }
 
+  /*
   private function request(string $method, array $options = array()) : string
-  {
-     $options['headers'] = $this->headers;
+   */
 
-     $response = $this->client->request($c->method, $c->endpoint, $options);
+  private function request(string $query, array $options = array()) : string
+  { 
+     $this->options['query'] = $query; // todo: Make sure that GuzzleHttp\Client accepts
+     // a string a value for 'query' key.
+
+     $response = $this->client->request($c->method, $c->endpoint, $this->options);
 
      return $response->getBody()->getContents();
   }

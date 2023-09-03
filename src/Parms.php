@@ -2,9 +2,6 @@
 declare(strict_types=1);
 namespace OpenFda;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Response;
-
 class Parms {
 
    public readonly string $search;
@@ -23,6 +20,9 @@ class Parms {
    static public function fromString(string $str, string $delim)
    {
       $a = explode($str, $delim);
+
+      return new OpenClient($a); 
+
 
    }
 }
